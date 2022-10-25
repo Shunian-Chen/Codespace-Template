@@ -3,7 +3,7 @@ install:
 		pip install -r requirements.txt
 
 format:
-	black *.py
+	find . -name '*.py' | xargs black
 
 lint:
 	find . -name '*.py' | xargs pylint --output-format=colorized --disable=R,C,W1203,W1202,W1514
