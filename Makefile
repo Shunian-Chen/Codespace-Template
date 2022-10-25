@@ -6,6 +6,7 @@ format:
 	black *.py
 
 lint:
+	pwd
 	pylint --disable=R,C,W1203,W1202,W1514 **/*.py
 test:
 
