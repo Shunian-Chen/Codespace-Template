@@ -1,14 +1,13 @@
 install:
 	pip install --upgrade pip &&\
-		pip install -r requirements.txt
+		pip install -r requirements.txt &&\
+		pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
 
-test:
-	python -m pytest -vv test_*.py
-
-format:	
-	black *.py dblib/*py
+format:
+	black *.py
 
 lint:
-	pylint --disable=R,C --ignore-patterns=test_.*?py *.py dblib
+	pylint --disable=R,C,W1203,W1202,W1514 inference.py
+test:
 
-all: install lint test
+all: install format lint test
